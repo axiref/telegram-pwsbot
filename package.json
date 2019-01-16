@@ -1,0 +1,29 @@
+{
+  "name": "pwsbot",
+  "version": "1.0.0",
+  "description": "一个投稿机器人telegram",
+  "scripts": {
+    "start": "npm run build && export NTBA_FIX_319=1 && node dist/main.js",
+    "dev": "export NTBA_FIX_319=1 && nodemon --ignore db.json --exec babel-node src/main.js",
+    "build": "babel src --out-dir dist --source-maps inline && cp -r src/lang dist"
+  },
+  "author": "axiref",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "lowdb": "^1.0.0",
+    "node-telegram-bot-api": "^0.30.0",
+    "update-dotenv": "^1.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "nodemon": "^1.18.9"
+  }
+}
