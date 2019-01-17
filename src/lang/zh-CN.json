@@ -47,7 +47,7 @@
   "sub_not_exists": "很抱歉，查找不到对应的稿件，操作无法完成",
   "blacklist_unban_notexists": "抱歉，黑名单里没有TA",
   "admin_finish_comment": "*评语*:\n{{comment}}",
-  "admin_reply_err": "`/re <回复内容>` 命令需要对稿件回复，回复内容是必不可少的，投稿者将收到您的回复",
+  "admin_reply_err": "`{{command}} <回复内容>` 命令需要对稿件回复，回复内容是必不可少的，投稿者将收到您的回复",
   "re_end": "结束对话",
   "re_start": "*系统提示: *您已进入对话",
   "re_comment": "*管理员: * {{comment}}",
@@ -60,7 +60,7 @@
   "re_send_success": "您已成功回复该用户",
   "re_send_err": "很抱歉消息发送失败，因为本机器人被用户封掉了！",
   "reject_intro_tips": "很抱歉，这个群并非审稿群，如需重新设置审稿群，您应该先删除配置文件中的`Group`字段\n\n🤖: *告辞*",
-  "pwshelp": "您可对稿件采取下列操作: \n- `/ok <评论>` 采纳稿件\n- `/no <理由>` 拒绝稿件\n- `/re <内容>` 回复投稿者\n- `/ban` 拉黑投稿者\n- `/unban` 取消拉黑投稿者\n- `/unre` 结束用户的会话状态",
+  "pwshelp": "您可对稿件采取下列操作: \n- `/ok <评论>` 采纳稿件\n- `/no <理由>` 拒绝稿件\n- `/re <内容>` 回复投稿者\n- `/ban` 拉黑投稿者\n- `/unban` 取消拉黑投稿者\n- `/unre` 结束用户的会话状态\n- `/echo <内容>` 回复用户而不进入会话模式",
   "yes": "保留",
   "yes_only": "是",
   "no": "匿名"

@@ -106,4 +106,14 @@ export default {
     }
     return false;
   },
+  /**
+   * 延迟执行
+   * @param  {[type]} delay [description]
+   * @return {[type]}       [description]
+   */
+  sleep (delay) {
+    return new Promise(function(resolve) {
+        setTimeout(resolve, delay);
+    })
+  }
 }

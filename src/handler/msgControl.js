@@ -211,10 +211,37 @@ export default
    * @param  {String} comment  管理员回复给用户的消息
    * @return {[type]}         [description]
    */
-  async replyMessage (message, comment) {
-    await re.start(message);// 进入会话模式
+  async replyMessage (message, comment, reMode = true) {
+    if (reMode) {
+      await re.start(message);// 进入会话模式
+    }
     await this.sendCurrentMessage(lang.get('re_comment', { comment }), message);
     return true;
+  },
+  /**
+   * 回复用户信息
+   * @param  {[type]} options.msg    [description]
+   * @param  {[type]} options.match  [description]
+   * @param  {[type]} options.rep    [description]
+   * @param  {[type]} options.repMsg [description]
+   * @param  {String} command        /re 或者 /echo 
+   * re 会进入会话状态， echo 只是发送，不进入会话
+   * @return {[type]}                [description]
+   */
+  async replyMessageWithCommand ({ msg, match, rep, repMsg }, command = '/re') {
+    if (helper.isPrivate(msg)) { return false }
+    const comment = match[1];
+    if (!comment) {throw {message: lang.get('admin_reply_err', { command })}}// 没有输入消息
+    let message = subs.getMsgWithReply(repMsg);
+    if (!message && !repMsg.forward_from) { return false }// 无从回复
+    if (!message) { message = { chat: repMsg.forward_from, from: repMsg.forward_from } }
+    let chatMode = command == '/re' ? true : false;
+    await this.replyMessage(message, comment, chatMode);
+    let respMsg = await rep(lang.get('re_send_success'));
+    await helper.sleep(1000);
+    this.editCurrentMessage("...", respMsg);
+    await helper.sleep(2000);
+    bot.deleteMessage(respMsg.chat.id, respMsg.message_id);
   },
   /**
    * 管理员点击采纳稿件(从actionMsg点击按钮)

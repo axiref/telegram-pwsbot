@@ -95,25 +95,15 @@ onText(/\/no (.+)|\/no/, async ({ msg, match, rep, repMsg, chatId }) => {
  * @param  {[type]} ({   msg,          match,        rep, repMsg } [description]
  * @return {[type]}       [description]
  */
-onText(/\/re (.+)|\/re/, async ({ msg, match, rep, repMsg }) => {
-  if (helper.isPrivate(msg)) { return false }
-  const comment = match[1];
-  if (!comment) {throw {message: lang.get('admin_reply_err')}}// 没有输入消息
-  let message = subs.getMsgWithReply(repMsg);
-  if (!message && !repMsg.forward_from) {
-    throw {message: lang.get('re_err_unknown')};// 既没有稿件，回复的也不是转发而来的信息，则报错
-  }
-  if (!message) { message = { chat: repMsg.forward_from, from: repMsg.forward_from } }
-  await msgControl.replyMessage(message, comment);
-  let respMsg = await rep(lang.get('re_send_success'));
-  setTimeout(() => {
-    msgControl.editCurrentMessage("...", respMsg);
-  }, 1000)
-  setTimeout(() => {
-    // 删除消息
-    bot.deleteMessage(respMsg.chat.id, respMsg.message_id);
-  }, 2000)
-})
+onText(/\/re (.+)|\/re/, p => msgControl.replyMessageWithCommand(p, '/re'))
+
+/**
+ * 回复用户一些信息，但不进入对话模式
+ * @param  {[type]} /\/echo (.+)|\/echo/  [description]
+ * @param  {[type]} async   ({           msg,          match, rep, repMsg } [description]
+ * @return {[type]}         [description]
+ */
+onText(/\/echo (.+)|\/echo/, p => msgControl.replyMessageWithCommand(p, '/echo'))
 
 /**
  * 使用评论并采纳稿件

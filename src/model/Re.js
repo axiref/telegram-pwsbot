@@ -42,6 +42,8 @@ class Re extends Db
       this.add(condition);
       // 给用户发送含有KeyboardButton的消息，告知已进入会话模式
       await msgControl.sendCurrentMessage(lang.get('re_start', {re_end: lang.get('re_end')}), message, {
+        resize_keyboard: true,
+        one_time_keyboard: true,
         reply_markup: {keyboard: [[{text: lang.get('re_end')}]] }
       })
       return true;
