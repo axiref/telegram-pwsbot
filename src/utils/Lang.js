@@ -97,7 +97,7 @@ class Lang {
   getUser (user) {
     let lastName = user.last_name || '';
     let firstName = user.first_name || '';
-    let username = lastName + firstName;
+    let username = firstName + ' ' + lastName;
 
     if (!username) {
       if (user.username) {
