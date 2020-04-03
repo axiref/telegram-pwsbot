@@ -1,11 +1,9 @@
 # PWS - Telegram投稿机器人
 
-![](https://img.shields.io/badge/build-passing-brightgreen.svg)
+[![Build Status](https://travis-ci.org/axiref/telegram-pwsbot.svg?branch=master)](https://travis-ci.org/axiref/telegram-pwsbot)
 ![](https://img.shields.io/badge/license-MIT-green.svg)
 
 此机器人帮助订阅者向频道投稿，支援多图(MediaGroup)投稿、稿件附加评论、夜间自动消音推送、多语言、黑名单等功能。
-
-![Banner](https://ws4.sinaimg.cn/large/007cAKxyly1fz8p3y1wyaj30zk0m8qsn.jpg)
 
 # 安装
 
