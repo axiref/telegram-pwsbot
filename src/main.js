@@ -11,3 +11,10 @@ bot.on('callback_query', (query) => { queryHandler.process(query) });
 bot.on('polling_error', (error) => { throw error; });
 
 console.log("Server is running...");
+
+if (process.env.BOT_ENV == 'test') {
+    setTimeout( () => {
+        console.log('Exiting automatically...');
+        process.exit(0);
+    }, 3000)
+}

@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "一个投稿机器人telegram",
   "scripts": {
-    "start": "npm run build && export NTBA_FIX_319=1 && node dist/main.js",
-    "dev": "export NTBA_FIX_319=1 && nodemon --ignore db.json --exec babel-node src/main.js",
-    "build": "babel src --out-dir dist --source-maps inline && cp -r src/lang dist"
+    "start": "npm run build && node dist/main.js",
+    "dev": "export nodemon --ignore db.json --exec babel-node src/main.js",
+    "build": "babel src --out-dir dist --source-maps inline && cp -r src/lang dist",
+    "test": "export BOT_ENV=test && npm run start"
   },
   "author": "axiref",
   "license": "MIT",

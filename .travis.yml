@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - '12.16.1'
+  - '12.1.0'
+before_install:
+  - echo "Token=$BOT_TOKEN\nAdmin=$BOT_ADMIN\nAutoMute=\nLang=zh_TW\nChannel=$BOT_CHANNEL" > .env
+script:
+  - npm run test
